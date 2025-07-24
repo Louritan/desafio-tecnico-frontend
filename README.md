@@ -1,59 +1,96 @@
-# StudentManagementApp
+# Sistema de Gerenciamento de Estudantes
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.2.
+## Descrição
 
-## Development server
+Este projeto é uma aplicação frontend desenvolvida em Angular que permite o gerenciamento de estudantes e suas notas. A aplicação oferece funcionalidades para cadastrar novos alunos, registrar notas e visualizar o desempenho acadêmico dos estudantes.
 
-To start a local development server, run:
+## Funcionalidades
+
+- Cadastro de estudantes
+- Registro de notas por disciplina
+- Visualização das notas dos estudantes
+- Interface responsiva e amigável
+- Validação de formulários
+
+## Tecnologias Utilizadas
+
+- Angular 20.1.0
+- TypeScript 5.8
+- Bootstrap 5.3 / ng-bootstrap 19.0
+- Tailwind CSS 4.1
+- SweetAlert2 para notificações
+- RxJS para programação reativa
+
+## Requisitos
+
+- Node.js (versão 14.x ou superior)
+- Angular CLI (versão 20.1.2 ou superior)
+- NPM (normalmente instalado com o Node.js)
+
+## Instalação
+
+1. Clone o repositório:
+   ```bash
+   git clone [URL do seu repositório]
+   cd desafio-tecnico-frontend
+   ```
+
+2. Instale as dependências:
+   ```bash
+   npm install
+   ```
+
+## Executando o Projeto
+
+Para iniciar o servidor de desenvolvimento:
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Navegue até `http://localhost:4200/` para acessar a aplicação. A aplicação será recarregada automaticamente se você alterar qualquer um dos arquivos fonte.
 
-## Code scaffolding
+## Estrutura do Projeto
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```
+src/
+├── app/
+│   ├── components/
+│   │   ├── register-student-form/       # Formulário de cadastro de estudantes
+│   │   ├── register-student-grade-form/ # Formulário de registro de notas
+│   │   └── student-grades-modal/        # Modal para visualização de notas
+│   ├── services/
+│   │   ├── students.service.ts          # Serviço para gerenciamento de estudantes
+│   │   └── student-grade.service.ts     # Serviço para gerenciamento de notas
+│   ├── app.config.ts                    # Configurações da aplicação
+│   ├── app.routes.ts                    # Configuração de rotas
+│   └── app.ts                           # Componente principal da aplicação
+└── ...
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Compilação para Produção
 
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+Para gerar uma versão de produção do projeto:
 
 ```bash
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Os artefatos de build serão armazenados no diretório `dist/`.
 
-## Running unit tests
+## Testes
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+### Executando testes unitários
 
 ```bash
 ng test
 ```
 
-## Running end-to-end tests
+Os testes unitários são executados com [Karma](https://karma-runner.github.io).
 
-For end-to-end (e2e) testing, run:
+## Recursos Adicionais
 
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- Para mais informações sobre o Angular CLI, acesse a [Documentação Oficial do Angular](https://angular.dev/tools/cli).
+- [Bootstrap](https://getbootstrap.com/) - Framework CSS utilizado para estilização.
+- [Tailwind CSS](https://tailwindcss.com/) - Framework CSS utilizado para estilização.
+- [SweetAlert2](https://sweetalert2.github.io/) - Biblioteca para criação de alertas personalizados.
