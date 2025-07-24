@@ -88,6 +88,23 @@ ng test
 
 Os testes unitários são executados com [Karma](https://karma-runner.github.io).
 
+## Screenshots da Aplicação
+
+### Lista de Estudantes
+![Lista de Estudantes](./assets/students-list.jpg)
+
+### Modal de Cadastro de Estudante
+![Cadastro de Estudante](./assets/register-student-modal.jpg)
+
+### Modal de Registro de Notas
+![Registro de Notas](./assets/register-student-grade-modal.jpg)
+
+### Modal de Visualização de Notas
+![Visualização de Notas](./assets/student-grades-modal.jpg)
+
+### Validação de Formulário
+![Validação de Registro de Notas](./assets/validating-grade-registration.jpg)
+
 ## Recursos Adicionais
 
 - Para mais informações sobre o Angular CLI, acesse a [Documentação Oficial do Angular](https://angular.dev/tools/cli).
