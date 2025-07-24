@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { StudentsService } from '../../services/students.service';
 import { FormsModule } from '@angular/forms';
+import { StudentGradeService } from '../../services/student-grade.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -11,18 +11,24 @@ import Swal from 'sweetalert2';
   styleUrl: './register-student-grade-form.css'
 })
 export class RegisterStudentGradeForm {
+  @Input() studentId: number = 0;
+
   constructor(
     private activeModal: NgbActiveModal,
-    private studentsService: StudentsService,
+    private studentGradeService: StudentGradeService,
   ) { }
 
   loading: boolean = false;
-  name: string = '';
-  age: number = 0;
+  subject: string = '';
+  grade: number = 0;
 
-  registerStudent() {
+  registerStudentGrade() {
     this.loading = true;
-    this.studentsService.postStudent({ name: this.name, age: this.age }).subscribe({
+    this.studentGradeService.postStudentGrade({
+      studentId: this.studentId,
+      subject: this.subject,
+      grade: this.grade,
+    }).subscribe({
       next: (_response) => {
         this.loading = false;
         this.closeModal(true);
@@ -35,7 +41,7 @@ export class RegisterStudentGradeForm {
           return;
         }
 
-        Swal.fire('Failed to register student', '', 'error');
+        Swal.fire('Failed to register student grade', '', 'error');
       }
     });
   }

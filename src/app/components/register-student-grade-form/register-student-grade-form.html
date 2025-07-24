@@ -1,5 +1,5 @@
 <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">New Student</h4>
+    <h4 class="modal-title" id="modal-basic-title">New Grade</h4>
     <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
 </div>
 <div class="modal-body">
@@ -8,17 +8,17 @@
     } @else {
         <form>
             <div class="mb-3">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" [(ngModel)]="name" name="name">
+                <label for="subject">Subject</label>
+                <input type="text" class="form-control" id="subject" [(ngModel)]="subject" name="subject">
             </div>
 
             <div class="mb-3">
-                <label for="age">Age</label>
-                <input type="number" class="form-control" id="age" [(ngModel)]="age" name="age">
+                <label for="grade">Grade</label>
+                <input type="number" class="form-control" id="grade" [(ngModel)]="grade" name="grade">
             </div>
         </form>
     }
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-outline-secondary" (click)="registerStudent()">Save</button>
+    <button type="button" class="btn btn-outline-secondary" (click)="registerStudentGrade()">Save</button>
 </div>

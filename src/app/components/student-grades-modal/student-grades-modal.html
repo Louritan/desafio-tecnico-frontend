@@ -1,0 +1,39 @@
+<div class="modal-header">
+  <h4 class="modal-title">Student Grades</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+</div>
+
+<div class="modal-body">
+  @if (loading) {
+    <div>
+      <p>Loading...</p>
+    </div>
+  } @else if (!studentGrades.length) {
+    <div>
+      <p>No grades found for this student.</p>
+    </div>
+  } @else {
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Subject</th>
+          <th>Grade</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (grade of studentGrades; track grade.Id) {
+          <tr>
+            <td>{{ grade.id }}</td>
+            <td>{{ grade.subject }}</td>
+            <td>{{ grade.grade }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-secondary" (click)="openRegisterStudentGradeModal()">Register Grade</button>
+</div>

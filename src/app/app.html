@@ -1,190 +1,37 @@
-<div class="bg-gray-50 min-h-screen">
-  <div class="container mx-auto px-4 py-8">
-    <div class="flex justify-between items-center bg-white rounded-lg shadow-md p-6 mb-6">
-      <h1 class="text-3xl font-bold text-gray-800 mb-4">Student Management App</h1>
-      <div class="flex items-center gap-5">
-        <button (click)="openRegisterStudentModal()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center">
-          Register Student
-        </button>
-        <button class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg flex items-center">
-          Register Grade
-        </button>
-      </div>
-    </div>
-
-    <div class="bg-white rounded-lg shadow-md overflow-hidden">
-      <div class="px-6 py-4 border-b border-gray-200">
-        <h2 class="text-xl font-semibold text-gray-800">Lista de Estudantes</h2>
-      </div>
-
-      <div class="overflow-x-auto">
-        <table class="w-full">
-          <thead class="bg-gray-50">
-            <tr>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nome</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Idade</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ações</th>
-            </tr>
-          </thead>
-          <tbody id="studentsTableBody" class="bg-white divide-y divide-gray-200">
-            <!-- Sample data - replace with dynamic content -->
-            <tr class="hover:bg-gray-50">
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">1</td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">João Silva</td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">20</td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                <button onclick="viewStudentGrades(1, 'João Silva')"
-                  class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md transition duration-200 flex items-center gap-2">
-                  <i class="fas fa-eye"></i>
-                  Ver Notas
-                </button>
-              </td>
-            </tr>
-            <tr class="hover:bg-gray-50">
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">2</td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Maria Santos</td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">19</td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                <button onclick="viewStudentGrades(2, 'Maria Santos')"
-                  class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md transition duration-200 flex items-center gap-2">
-                  <i class="fas fa-eye"></i>
-                  Ver Notas
-                </button>
-              </td>
-            </tr>
-            <tr class="hover:bg-gray-50">
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">3</td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Pedro Oliveira</td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">21</td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                <button onclick="viewStudentGrades(3, 'Pedro Oliveira')"
-                  class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md transition duration-200 flex items-center gap-2">
-                  <i class="fas fa-eye"></i>
-                  Ver Notas
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- Student Registration Modal -->
-    <div id="studentModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden items-center justify-center p-4 z-50">
-      <div class="bg-white rounded-lg shadow-xl max-w-md w-full">
-        <div class="px-6 py-4 border-b border-gray-200">
-          <h3 class="text-lg font-semibold text-gray-800">Cadastrar Estudante</h3>
-        </div>
-
-        <form onsubmit="submitStudent(event)" class="p-6">
-          <div class="mb-4">
-            <label for="studentName" class="block text-sm font-medium text-gray-700 mb-2">Nome</label>
-            <input type="text" id="studentName" name="name" required
-              class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-          </div>
-
-          <div class="mb-6">
-            <label for="studentAge" class="block text-sm font-medium text-gray-700 mb-2">Idade</label>
-            <input type="number" id="studentAge" name="age" required min="1" max="100"
-              class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-          </div>
-
-          <div class="flex justify-end gap-3">
-            <button type="button" onclick="closeStudentModal()"
-              class="px-4 py-2 text-gray-600 border border-gray-300 rounded-md hover:bg-gray-50 transition duration-200">
-              Cancelar
-            </button>
-            <button type="submit"
-              class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-200">
-              Cadastrar
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-
-    <!-- Grade Registration Modal -->
-    <div id="gradeModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden items-center justify-center p-4 z-50">
-      <div class="bg-white rounded-lg shadow-xl max-w-md w-full">
-        <div class="px-6 py-4 border-b border-gray-200">
-          <h3 class="text-lg font-semibold text-gray-800">Cadastrar Nota</h3>
-        </div>
-
-        <form onsubmit="submitGrade(event)" class="p-6">
-          <div class="mb-4">
-            <label for="gradeStudentId" class="block text-sm font-medium text-gray-700 mb-2">Estudante</label>
-            <select id="gradeStudentId" name="studentId" required
-              class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent">
-              <option value="">Selecione um estudante</option>
-              <option value="1">João Silva</option>
-              <option value="2">Maria Santos</option>
-              <option value="3">Pedro Oliveira</option>
-            </select>
-          </div>
-
-          <div class="mb-4">
-            <label for="gradeSubject" class="block text-sm font-medium text-gray-700 mb-2">Matéria</label>
-            <input type="text" id="gradeSubject" name="subject" required
-              class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent">
-          </div>
-
-          <div class="mb-6">
-            <label for="gradeValue" class="block text-sm font-medium text-gray-700 mb-2">Nota</label>
-            <input type="number" id="gradeValue" name="grade" required min="0" max="10" step="0.1"
-              class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent">
-          </div>
-
-          <div class="flex justify-end gap-3">
-            <button type="button" onclick="closeGradeModal()"
-              class="px-4 py-2 text-gray-600 border border-gray-300 rounded-md hover:bg-gray-50 transition duration-200">
-              Cancelar
-            </button>
-            <button type="submit"
-              class="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition duration-200">
-              Cadastrar
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-
-    <!-- Student Grades Modal -->
-    <div id="gradesViewModal"
-      class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden items-center justify-center p-4 z-50">
-      <div class="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[80vh] overflow-y-auto">
-        <div class="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
-          <h3 id="gradesModalTitle" class="text-lg font-semibold text-gray-800">Notas do Estudante</h3>
-          <button onclick="closeGradesViewModal()" class="text-gray-400 hover:text-gray-600">
-            <i class="fas fa-times text-xl"></i>
-          </button>
-        </div>
-
-        <div class="p-6">
-          <div class="overflow-x-auto">
-            <table class="w-full">
-              <thead class="bg-gray-50">
-                <tr>
-                  <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
-                  <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Matéria
-                  </th>
-                  <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nota</th>
-                </tr>
-              </thead>
-              <tbody id="studentGradesTableBody" class="bg-white divide-y divide-gray-200">
-                <!-- Dynamic content will be inserted here -->
-              </tbody>
-            </table>
-          </div>
-
-          <div id="noGradesMessage" class="text-center py-8 text-gray-500 hidden">
-            <i class="fas fa-clipboard-list text-4xl mb-4"></i>
-            <p>Nenhuma nota encontrada para este estudante.</p>
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-2">
+    <h3>Student List</h3>
+    <button class="btn btn-primary" (click)="openRegisterStudentModal()">New Student</button>
   </div>
-</div>
 
-<router-outlet />
+  @if (loading) {
+    <div class="text-muted">Loading...</div>
+  } @else if (!students.length) {
+    <div class="alert alert-info">
+      No students found.
+    </div>
+  } @else {
+    <table class="table table-bordered mt-3">
+      <thead class="table-light">
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (student of students; track student.id) {
+        <tr>
+          <td>{{ student.id }}</td>
+          <td>{{ student.name }}</td>
+          <td>{{ student.age }}</td>
+          <td>
+            <button class="btn btn-primary" (click)="openStudentGradesModal(student.id)">Grades</button>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  }
+</div>
